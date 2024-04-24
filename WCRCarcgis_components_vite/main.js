@@ -42,14 +42,16 @@ defineChartsElements(window, {
     .addEventListener("arcgisViewReadyChange", (event) => {
       const { map, view } = event.target;
       const featureLayer = map.layers.find(
-        (layer) => layer.title === "CollegeScorecard_Charts"
+        (layer) => layer.title === "WCRC PROD interactive - WCRC Rivers Flow"
       );
-      const scatterplotConfig = featureLayer.charts[0];
+      const scatterplotConfig = featureLayer.charts[2];
       const scatterplotElement = document.querySelector(
-        "arcgis-charts-scatter-plot"
+        "arcgis-charts-line-chart"
       );
       scatterplotElement.config = scatterplotConfig;
       scatterplotElement.layer = featureLayer;
+      console.log(featureLayer.charts[2].title.content.text);
+      // scatterplotElement.filterBySelection = true;
 
       const featureLayerViews = view.layerViews;
 
